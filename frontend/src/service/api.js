@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {API_NOTIFICATION_MESSAGES , SERVICE_URLS}  from "../constants/config.js"
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://iitisoc-backend.onrender.com/api';
 //ek comman api bana rahe hai
 // ✅ Create axios instance and store it in a variable
 const axiosInstance = axios.create({

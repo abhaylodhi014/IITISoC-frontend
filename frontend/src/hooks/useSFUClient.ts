@@ -37,7 +37,7 @@ export function useSFUClient(
     const screenProducer = useRef<any>(null);
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:8000/mediasoup");
+        const ws = new WebSocket("ws://iitisoc-backend.onrender.com/mediasoup");
         wsRef.current = ws;
 
         ws.onopen = () => {
