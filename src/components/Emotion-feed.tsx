@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card"
 import { Badge } from "../components/ui/Badge"
 import { ScrollArea } from "../components/ui/Scroll-area"
-import { Progress } from "../components/ui/progress"
+import { Progress } from "../components/ui/Progress"
 import { TrendingUp, Zap, Heart } from "lucide-react"
 import { getEmojiFromEmotion } from "../utils/getEmoji"
 interface Participant {
