@@ -1,6 +1,6 @@
 export function createMeetingRoom(peerId: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const ws = new WebSocket("ws://localhost:8000/mediasoup");
+    const ws = new WebSocket("ws://iitisoc-backend.onrender.com/mediasoup");
 
     ws.onopen = () => {
       ws.send(JSON.stringify({ type: "createRoom", data: { peerId } }));
