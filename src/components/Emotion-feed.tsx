@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card"
 import { Badge } from "../components/ui/Badge"
 import { ScrollArea } from "../components/ui/Scroll-area"
-import { Progress } from "../components/ui/Progress"
+import { Progress } from "../components/ui/progress"
 import { TrendingUp, Zap, Heart } from "lucide-react"
 import { getEmojiFromEmotion } from "../utils/getEmoji"
 interface Participant {
@@ -16,11 +16,12 @@ interface Participant {
 
 interface EmotionFeedProps {
   participants: Participant[]
+  participantList: Participant[]
 }
 
 // const emojiReactions = ["😊", "😄", "👍", "👏", "❤️", "🎉", "💡", "🤔", "😮", "🔥"]
 
-export function EmotionFeed({ participants }: EmotionFeedProps) {
+export function EmotionFeed({ participants, participantList }: EmotionFeedProps) {
   const [recentEmotions, setRecentEmotions] = useState<
     {
       time: string
@@ -30,6 +31,7 @@ export function EmotionFeed({ participants }: EmotionFeedProps) {
       confidence: number
     }[]
   >([])
+    console.log("Participants in EmotionFeed:", participantList);
 
   const [overallMood, setOverallMood] = useState(78)
 
@@ -45,7 +47,7 @@ export function EmotionFeed({ participants }: EmotionFeedProps) {
       ...prev,
       ...participants.map((p) => ({
         time: getTime(),
-        participant: p.name,
+        participant:(p.name!=="You")?participantList.find((pl) => pl.id === p.id)?.name || "Unknown":"You",
         emotion: p.emotion,
         type: p.emotion, // or map emoji to readable type
         confidence: Math.round(p.confidence * 100),
@@ -64,7 +66,7 @@ export function EmotionFeed({ participants }: EmotionFeedProps) {
   return (
     <div className="p-4 space-y-4">
       {/* Overall Mood */}
-      <Card>
+      {/* <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-sm flex items-center">
             <TrendingUp className="w-4 h-4 mr-2" />
@@ -80,7 +82,7 @@ export function EmotionFeed({ participants }: EmotionFeedProps) {
           </div>
           <Progress value={overallMood} className="h-2" />
         </CardContent>
-      </Card>
+      </Card> */}
 
       {/* Live Emotion Feed */}
       <Card>
